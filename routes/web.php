@@ -51,8 +51,6 @@ Route::get('/auth/redirect/{provider}', function ($provider) {
  
 Route::get('/auth/callback/{provider}', function ($provider) {
     $userProvider = Socialite::driver($provider)->user();
- 
-    //dd($user);
     
     $user = User::firstOrCreate([
         "email" => $userProvider->email

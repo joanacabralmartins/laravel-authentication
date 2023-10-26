@@ -2,8 +2,6 @@
 
 use App\Http\Controllers\Api\NoticiaController;
 use App\Models\Noticia;
-use App\Models\User;
-use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,25 +24,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Route::get('/noticias', 'App\Http\Controllers\Api\NoticiaController@index');
-//Route::apiResource('noticias', NoticiaController::class);
-
-//desabilitar autenticacao
-Route::middleware('auth:sanctum')->group(function(){
-    
+Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('noticias', NoticiaController::class);
-    
-    Route::patch('/noticias/{noticia}', function(Noticia $noticia, Request $request){
 
-        /*
+    Route::patch('/noticias/{noticia}', function (Noticia $noticia, Request $request) {
         $user = auth('sanctum')->user();
-        //$retorno = $user->hasPermissionTo('updateNoticia');
-        //$retorno = $user->can('update', $noticia);
-        //dd($retorno);
-        if(! $user->can('update', $noticia)){
-            return response()->json('Nao Autorizado', 403);
+
+        if (!$user->can('update', $noticia)) {
+            return response()->json('Nao Autorizado', 401);
         }
-        */
 
         $noticia->titulo = $request->titulo;
         $noticia->save();
@@ -52,49 +40,16 @@ Route::middleware('auth:sanctum')->group(function(){
     });
 });
 
-Route::post('/login', function(Request $request){
-
+Route::post('/login', function (Request $request) {
     $credenciais = $request->only(['name', 'email', 'password']);
-    //dd($credenciais);
 
-    if(Auth::attempt($credenciais) === false){
-        return response()->json("usuario nao autorizado");
+    if (Auth::attempt($credenciais) === false) {
+        return response()->json('Nao Autorizado', 401);
     }
 
     $user = Auth::user();
     $user->tokens()->delete();
     $token = $user->createToken('token');
+
     return response()->json(['token' => $token->plainTextToken]);
-
-
-
-
-
-
-
-
-
-
-/*
-        $credenciais = $request->only(['name', 'email', 'password']);
-        
-        if(Auth::attempt($credenciais) === false){
-            return response()->json('Nao Autorizado', 401);
-        }
-
-        $user = Auth::user();
-        $user->tokens()->delete();
-        $token = $user->createToken('token');
-        //dd($token);
-
-        return response()->json(['token' => $token->plainTextToken]);
-        
-    */    
-
 });
-
-/*
-Route::get('/noticias', function(){
-    return response()->json(Noticia::all());
-});
-*/
