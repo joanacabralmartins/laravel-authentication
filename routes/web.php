@@ -39,6 +39,8 @@ Route::post('/permissoes', 'App\Http\Controllers\PermissoesController@store')->n
 Route::get('/usuarios', 'App\Http\Controllers\UsuariosController@index')->name('usuarios.index');
 Route::get('/usuarios/{user}', 'App\Http\Controllers\UsuariosController@userRoles')->name('usuarios.papeis');
 Route::post('/usuarios/{user}', 'App\Http\Controllers\UsuariosController@store')->name('usuarios.store');
+Route::get('/usuarios/edit/password', 'App\Http\Controllers\UsuariosController@editPassword')->name('edit.password');
+Route::patch('/usuarios/update/password', 'App\Http\Controllers\UsuariosController@updatePassword')->name('update.password');
 
 
 use Laravel\Socialite\Facades\Socialite;
