@@ -65,7 +65,6 @@ Route::get('/auth/callback/{provider}', function ($provider) {
 
     return redirect('/dashboard');
 
-
 })->name('social.callback');
 
 require __DIR__.'/auth.php';

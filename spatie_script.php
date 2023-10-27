@@ -23,10 +23,10 @@ Exemplo de comando utilizado para criar uma permissao
 
  Aqui e utilizado o metodo findOrCreate para encontrar ou criar uma permissao
  */
-$permissionViewNoticia = Permission::findOrCreate('viewNoticia');
-$permissionCreateNoticia = Permission::findOrCreate('createNoticia');
-$permissionUpdateNoticia = Permission::findOrCreate('updateNoticia');
-$permissionDeleteNoticia = Permission::findOrCreate('deleteNoticia');
+$permissionViewNoticia = Spatie\Permission\Models\Permission::findOrCreate('viewNoticia');
+$permissionCreateNoticia = Spatie\Permission\Models\Permission::findOrCreate('createNoticia');
+$permissionUpdateNoticia = Spatie\Permission\Models\Permission::findOrCreate('updateNoticia');
+$permissionDeleteNoticia = Spatie\Permission\Models\Permission::findOrCreate('deleteNoticia');
 
 /**
 O metodo assignRole e utilizado para atribuir um papel a uma permissao
