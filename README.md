@@ -4,7 +4,7 @@ NOTA: toda linha iniciada com $ refere-se a um comando que deve ser executado no
 
 1) Crie um diretório em sua maquina para clonar o repositório:
 
-$ mkdir exemplo
+    $ mkdir exemplo
 
 
 2) Inicialize o git:
