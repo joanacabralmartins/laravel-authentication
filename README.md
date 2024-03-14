@@ -1,3 +1,4 @@
+Projeto: Aplicação Laravel com Autenticação por Google e GitHub
 Siga os seguintes passos para ativar o projeto e deixá-lo pronto para uso:
 
 NOTA: toda linha iniciada com $ refere-se a um comando que deve ser executado no terminal
