@@ -6,7 +6,6 @@ NOTA: toda linha iniciada com $ refere-se a um comando que deve ser executado no
 
     $ mkdir exemplo
 
-
 2) Inicialize o git:
 
     $ git init
@@ -31,35 +30,27 @@ NOTA: toda linha iniciada com $ refere-se a um comando que deve ser executado no
 
     $ cp .env.example .env
 
-
 7) Edite este arquivo e configure de acordo com o seu banco de dados
-
-
 8) Gere a nova chave do projeto:
 
     $ php artisan key:generate
-
 
 9) Rode as migrations para criar a base:
 
     $ php artisan migrate
 
-
 10) Rode novamente as migrations agora com o --seed para povoar a base:
 
     $ php artisan migrate:fresh --seed
     
-
 11) Instale o NPM:
 
-$ npm install
-
+    $ npm install
 
 12) Rode o NPM (é necessário por causa do VITE):
 
-$ npm run dev
-
+    $ npm run dev
 
 13) Em outra aba do terminal execute o servidor PHP:
 
-$ php artisan serve
+    $ php artisan serve
